@@ -13,7 +13,7 @@ pipeline {
            git(
                 url: 'https://github.com/horrondor/Devops_final_project.git',
                 branch: 'main',
-                credentialsId: ${Github_cred}
+                credentialsId: "${Github_cred}"
               )
       }
     }
