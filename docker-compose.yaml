@@ -1,6 +1,7 @@
 services:
   backend:
     build: ./mern/backend
+    image: mern/backend:${TAG}
     ports:
       - "5050:5050" 
     networks:
@@ -12,6 +13,7 @@ services:
 
   frontend:
     build: ./mern/frontend
+    image: mern/frontend:${TAG}
     ports:
       - "5173:5173"  
     networks:
