@@ -24,7 +24,7 @@ pipeline {
 
         // echo "Creating Backend image"
         // sh "docker build -t ${Backend_image}:${TAG} ."
-        sh "docker-compose build"
+        sh "docker compose build"
       }
     }
     stage ('scan docker image'){
@@ -56,7 +56,7 @@ pipeline {
       steps {
         echo "Pushing docker images"
         sh """
-          docker-compose push
+          docker compose push
         """
       }
     }
