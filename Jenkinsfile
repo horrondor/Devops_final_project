@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label 'ubuntu_slave' }
   environment {
     Github_cred    = "Github-cred"
     Dockerhub_cred = "Dockerhub-cred"
@@ -13,7 +13,7 @@ pipeline {
            git(
                 url: 'https://github.com/horrondor/Devops_final_project.git',
                 branch: 'main',
-                credentialsId: "${Github_cred}"
+                credentialsId: "${Github_cred}"    
               )
       }
     }
