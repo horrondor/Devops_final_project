@@ -1,6 +1,6 @@
 #!/bin/bash
 PROMETHEUS_VERSION="v3.5.0"
-PROMETHEUS_FILE="prometheus-3.50.linux-amd64"
+PROMETHEUS_FILE="prometheus-3.5.0.linux-amd64"
 
 sudo useradd --no-create-home --shell /bin/false prometheus
 sudo mkdir /etc/prometheus
