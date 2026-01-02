@@ -11,7 +11,7 @@ wget https://github.com/prometheus/prometheus/releases/download/"${PROMETHEUS_VE
 tar xvf "${PROMETHEUS_FILE}".tar.gz
 cd "${PROMETHEUS_FILE}"
 
-sudo  prometheus /usr/local/bin/
+sudo cp prometheus /usr/local/bin/
 sudo cp promtool /usr/local/bin
 sudo chown prometheus:prometheus /usr/local/bin/prometheus
 sudo chown prometheus:prometheus /usr/local/bin/promtool
