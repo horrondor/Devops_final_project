@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MIT-0
+---
+# vars file for observability
+github_prometheus_script_url: "https://raw.githubusercontent.com/horrondor/Devops_final_project/refs/heads/observe/prometheus/install_prometheus.sh"
+prometheus_script_dest: "/opt/prometheus_script.sh"
+
+github_alertmanager_script_url: "https://raw.githubusercontent.com/horrondor/Devops_final_project/refs/heads/observe/alertmanager/install_alertmanager.sh"
+alertmanager_script_dest: "/opt/alertmanager_script.sh"
+
+github_grafana_script_url: "https://raw.githubusercontent.com/horrondor/Devops_final_project/refs/heads/observe/grafana/install_grafana.sh"
+grafana_script_dest: "/opt/grafana_script.sh"
+Prometheus_rules_url: "https://raw.githubusercontent.com/horrondor/Devops_final_project/refs/heads/observe/prometheus/rules.yml"
+prometheus_rules_path: "/etc/prometheus/rules.yml"
