@@ -1,0 +1,81 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for observability
+
+- name: Get prometheus script
+  ansible.builtin.get_url:
+    url: "{{ github_prometheus_script_url }}"
+    dest: "{{ prometheus_script_dest }}"
+    mode: "0755"
+
+- name: Run prometheus install script
+  ansible.builtin.command: bash {{ prometheus_script_dest }}
+  args:
+    creates: /usr/local/bin/prometheus
+
+- name: Check prometheus version
+  ansible.builtin.command: prometheus --version
+  register: prometheus_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: Display prometheus version
+  ansible.builtin.debug:
+    msg: "{{ prometheus_version.stdout_lines | default('Prometheus not installed') }}"
+  
+- name: Download Prometheus rules file
+  ansible.builtin.get_url:
+    url: "{{ Prometheus_rules_url }}"
+    dest: "{{ prometheus_rules_path }}"
+    mode: "0644"
+
+- name: Add rules.yml to prometheus config
+  ansible.builtin.lineinfile:
+    path: /etc/prometheus/prometheus.yml
+    insertafter: "^rule_files:"
+    line: "  - rules.yml"
+    state: present
+    backup: yes
+  notify: Restart prometheus service
+
+- name: Get alertmanager script
+  ansible.builtin.get_url:
+    url: "{{ github_alertmanager_script_url }}"
+    dest: "{{ alertmanager_script_dest }}"
+    mode: "0755"
+
+- name: Run alertmanager install script
+  ansible.builtin.command: bash {{ alertmanager_script_dest }}
+  args:
+    creates: /usr/local/bin/alertmanager
+
+- name: Check alertmanager version
+  ansible.builtin.command: alertmanager --version
+  register: alertmanager_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: Display alertmanager version
+  ansible.builtin.debug:
+    msg: "{{ alertmanager_version.stdout_lines | default('Alertmanager not installed') }}"
+
+- name: Get grafana script
+  ansible.builtin.get_url:
+    url: "{{ github_grafana_script_url }}"
+    dest: "{{ grafana_script_dest }}"
+    mode: "0755"
+
+- name: Run grafana install script
+  ansible.builtin.command: bash {{ grafana_script_dest }}
+  args:
+    creates: /usr/sbin/grafana-server
+
+- name: Check grafana version
+  ansible.builtin.command: grafana-server -v
+  register: grafana_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: Display grafana version
+  ansible.builtin.debug:
+    msg: "{{ grafana_version.stdout_lines | default('Grafana not installed') }}"

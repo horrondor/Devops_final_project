@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'ubuntu_slave' }
+  agent { label 'Jenkins_slave' }
   environment {
     Github_cred    = "Github-cred"
     Dockerhub_cred = "Dockerhub-cred"
