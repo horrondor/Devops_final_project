@@ -1,0 +1,102 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for Jenkins_slave
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Add ubuntu user
+  ansible.builtin.user:
+     name: ubuntu
+     shell: /bin/bash
+     create_home: yes
+     state: present
+
+- name: Allow ubuntu user passwordless sudo
+  ansible.builtin.copy:
+    dest: /etc/sudoers.d/ubuntu
+    content: "ubuntu ALL=(ALL) NOPASSWD:ALL"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: create .ssh directory
+  ansible.builtin.file:
+    path: "/home/{{ user_name }}/.ssh"
+    state: directory
+    recurse: yes
+    mode: "0700"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+
+- name: Add public key of master to slave authorized_keys
+  ansible.posix.authorized_key:
+    user: "{{ user_name }}"
+    key: "{{ lookup('file', '/home/horrondor/.ssh/id_rsa.pub') }}"
+    state: present
+
+- name: Install java for Jenkins
+  ansible.builtin.apt:
+    name: openjdk-21-jdk
+    state: present
+
+- name: Check Java version
+  ansible.builtin.command: java -version
+  register: java_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: Display java version
+  ansible.builtin.debug:
+    msg: "{{ java_version.stderr_lines | default('Java not found') }}"  
+
+- name: Download and run docker script
+  ansible.builtin.shell: curl -fsSL https://get.docker.com | sh
+  args: 
+    executable: /bin/bash
+  register: docker_install
+
+- name:  Show Docker installation output
+  ansible.builtin.debug:
+    msg: "{{ docker_install.stdout_lines | default('docker install error') }}"   
+
+- name: Add ubuntu to docker group
+  ansible.builtin.user:
+    name: ubuntu
+    groups: docker
+    append: yes
+
+- name: Start and  enable docker service
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Check Docker version
+  ansible.builtin.command: docker --version
+  register: docker_version
+  ignore_errors: yes
+
+- name: Display Docker version
+  ansible.builtin.debug:
+    msg: "{{ docker_version.stdout_lines | default ('Docker not installed') }}"  
+   
+- name: Download and run Trivy install script
+  ansible.builtin.shell: curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
+  args: 
+    executable: /bin/bash
+  register: trivy_install
+
+- name: Display trivy install output
+  ansible.builtin.debug:
+    msg: "{{ trivy_install.stdout_lines | default (' trivy installation error') }}"   
+
+- name: Check Trivy version
+  ansible.builtin.command: trivy --version
+  register: trivy_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: Display trivy version
+  ansible.builtin.debug: 
+    msg: "{{ trivy_version.stdout_lines | default('Trivy not installed') }}"
