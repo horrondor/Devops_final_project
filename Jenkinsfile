@@ -2,9 +2,9 @@ pipeline {
   agent { label 'Jenkins_slave' }
   environment {
     Github_cred    = "Github-cred"
-    Dockerhub_cred = "Dockerhub-cred"
-    Frontend_image = "mern/frontend"
-    Backend_image  = "mern/backend"
+    Frontend_image = "raju217/frontend"
+    Backend_image  = "raju217/backend"
+    Dockerhub_username = "raju217"
     TAG = "${BUILD_NUMBER}"
   }
   stages{
