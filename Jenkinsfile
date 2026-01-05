@@ -65,8 +65,7 @@ pipeline {
     stage ('Push docker images'){
       steps {
         echo "Pushing docker images"
-       
-          withDockerRegistry([credentialsId: 'Dockerhub_cred', url: '']){
+          withDockerRegistry([credentialsId: 'Dockerhub-cred', url: '']){
            sh """
              docker push ${Frontend_image}:${TAG} 
              docker push ${Backend_image}:${TAG}  
