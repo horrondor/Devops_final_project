@@ -17,13 +17,20 @@ pipeline {
               )
       }
     }
+    stage('Show Workspace') {
+      steps {
+        echo "Workspace path: ${env.WORKSPACE}"
+        sh 'pwd'
+        sh 'ls -l'
+      }
+    }
     stage ('Make Docker images'){
       steps {
         echo "Creating frontend image"
-        sh "docker build -t ${Frontend_image}:${TAG} ./frontend"
+        sh "docker build -t ${Frontend_image}:${TAG} ${env.WORKSPACE}./frontend"
 
         // echo "Creating Backend image"
-        sh "docker build -t ${Backend_image}:${TAG} ./backend"
+        sh "docker build -t ${Backend_image}:${TAG} ${env.WORKSPACE}./backend"
         // sh "docker compose build"
       }
     }
