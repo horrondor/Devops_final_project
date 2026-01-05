@@ -12,7 +12,7 @@ pipeline {
       steps {
            git(
                 url: 'https://github.com/horrondor/Devops_final_project.git',
-                branch: 'main',
+                branch: 'observe',
                 credentialsId: "${Github_cred}"    
               )
       }
