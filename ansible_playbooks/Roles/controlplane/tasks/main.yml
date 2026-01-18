@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for controlplane
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Download and run controlplane script
+  ansible.builtin.shell: curl -fsSl https://raw.githubusercontent.com/horrondor/Devops_final_project/refs/heads/observe/k8-cluster-scripts/k8-controlplane.sh | sh
+  args:
+    executable: /bin/bash
+  register: controlplane_install
+
+- name: Display controlplane install output
+  ansible.builtin.debug:
+    msg: "{{ controlplane_install.stdout_lines | default('Controlplane install error') }}"

@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for workernode
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for workernode
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Download and run workernode script
+  ansible.builtin.shell: curl -fsSl https://raw.githubusercontent.com/horrondor/Devops_final_project/refs/heads/observe/k8-cluster-scripts/workernode.sh | sh
+  args:
+    executables: /bin/bash
+  register: workernode_install
+
+- name: Display workernode install output
+  ansible.builtin.debug:
+    msg: "{{ workernode_install.stdout_lines | default('workernode install error') }}"

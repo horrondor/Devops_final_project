@@ -1,0 +1,5 @@
+- name: workernode setup using script
+  hosts: workernode
+  become: true
+  roles:
+    - workernode

@@ -100,3 +100,6 @@
 - name: Display trivy version
   ansible.builtin.debug: 
     msg: "{{ trivy_version.stdout_lines | default('Trivy not installed') }}"
+
+
+  

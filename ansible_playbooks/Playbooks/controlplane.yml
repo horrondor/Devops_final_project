@@ -1,0 +1,5 @@
+- name: Controlplane setup using script
+  hosts: controlplane
+  become: true
+  roles:
+    - controlplane
