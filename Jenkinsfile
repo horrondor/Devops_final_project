@@ -30,7 +30,7 @@ pipeline {
         sh "docker build -t ${Frontend_image}:${TAG} ${env.WORKSPACE}/mern/frontend"
 
         // echo "Creating Backend image"
-        sh "docker build -t ${Backend_image}:${TAG} ${env.WORKSPACE}/mern/backend"
+        sh "docker build --no-cache -t ${Backend_image}:${TAG} ${env.WORKSPACE}/mern/backend"
         // sh "docker compose build"
       }
     }
