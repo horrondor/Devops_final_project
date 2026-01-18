@@ -57,7 +57,7 @@ pipeline {
           --severity HIGH,CRITICAL\
           --ignore-unfixed\
           ${Backend_image}:${TAG} \
-          || true
+          
 
          """ 
       }
@@ -72,6 +72,13 @@ pipeline {
            """
           }
         
+      }
+    }
+    stage('Deploy to k8 cluster'){
+      steps{
+        sh """
+          
+        """
       }
     }
     stage ('Deploy dev instance'){
