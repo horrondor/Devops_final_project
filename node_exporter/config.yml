@@ -1,0 +1,6 @@
+tls_server_config:
+  cert_file: node_exporter.crt
+  key_file: node_exporter.key
+
+basic_auth_users:
+  admin: $2y$12$vi9oCy.CBelPAR8zAgJD3eJhIKxGbYS25lGRLboQhIkrPFrCRBH5W

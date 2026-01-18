@@ -1,0 +1,33 @@
+vagrant@Jenkins-slave:/etc/node_exporter$ ls
+config.yml  node_exporter.crt  node_exporter.key
+vagrant@Jenkins-slave:/etc/node_exporter$ cat node_exporter.key 
+cat: node_exporter.key: Permission denied
+vagrant@Jenkins-slave:/etc/node_exporter$ sudo cat node_exporter.key 
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwFYoK+iIdLqoO
+1Y+feegudV2FoLQiG/2DtMkY4TKX2Hd/7JxehMT66/YLnVX4k0VplIKfogfdE/XQ
+smCzaGBRvORxDH1pIMroAYGC3c/WfN1WShT6+jriE/+0a+d81HDnB1fFUS+vw1CW
+a/YdTFDItojNu1CPHxTK9aEJL9oktl0qwOSs7KvhsK1MKERr1xZvaefBoQpVBDT/
+zY3JhAvMCuNVX6OzYukz2JMWeN3q8DFqK2Qcwv+xtAxm/PWd4Q6MYe1HnAMN3LxI
+uIL5nV+9rhBg2dNAJA+MoDRu5ppQMEJ3zhBg8WmiBuij8q8xzmAKhXCzbzBQVz4s
+KPw+DoH1AgMBAAECggEABm0Wz10/EvkRwD5Xgj6w9EcYvWh2wnrqhty5bRTE46lE
+/TBtqX5ncO/dGCHrEgoP4bFHjhtb9ZvFoBLueAWyZDFEVgLabdSCSzLI3vWI4P9I
+FZ7ZAqrQrNEFhzhb56CaKThJofwbRSsX3RF+FyYimZydxAJWx45fFCQgNyVdrPLC
+TW06ShbveidTjZ+2GgJG8XNuFXOrN7Q6UMl9JuFmqAOcvScFn3yEc/k5nzovgR2e
+W//KrQZWpNf9oyzS7R6rL4EBpK5HBp0d5JKbWUlj1CV2mYdvxy67TWB/5I6lzNCT
+9QprkOdEsnELDSqbpPvpyTWZG+bOTmwoPs911cWT0QKBgQDjjgc6PiHy8QQR3464
+2C/RTGt08bCx/FdZEbyfgzugeoob+NTzonQ/1kukCmOAJ8gZczEP3fa60QzuUtFr
+/fqARSenHUy2BxWa/4PLo+Vn2HNZIIhjX13upXE3RXQ7Z9taAVgBUNxAMQ4G0hMi
+/ZPZRG62KiIWV8ypmcUhhnFPBQKBgQDGGGaHvxINyENRA4Ra4RRDX3toXL4Z2g8k
+OvAavBGdEmCdUnPcIwGPRtcSX6vb3s/YpCTGvQsv9aTYU/eCB/tJrWX7Ya6Q+nQf
+vY10zCdTU2q/fmTwHpXbiHPPXyx+DwLPZ2i/lO4p7V/L74E3h6EQPyFsv7zFEWdt
+pDdP+b56MQKBgHq6FSfSbtjqKDnDiuQipNeLEcGGwLed0zZUnJijXLtWm7ouYBvu
+mCf92dnlSHjL+93OBL38BqAHM6Qtwokt97bKlXJKGR9rfrmT6W8hPA7f7IY7R5Pg
+0XZugDtBGEkZ4HIQm3hKNh/g1SHUl0Gd5emeQN+6pZvLSrSGHI3SRrZJAoGBAImW
+gwg/1rtJ4C+RwMkaUeelluJaoBL2mNOyN/hprdYp4H8EuMIqcjfgnRr+5jAVpsky
+4PREc1PBStiSIXPoNUnsLMwYAZZizmsJTgnUjm/anWcZ0+PPaoiLUtyynwWDSZFi
+oqeGOpFWdNYBqP83rc/J+V4+Ik/CEdNeXqimrvzRAoGAMz0q0oksXy25+5t3Zc7R
+Yz45c9xFiMZd4ZB+Gg2aMx8rJGHvmmf/senDW3lebkQPQXvsy2nbKeQb6c8Btgij
+VJKntKekW5HlxhdPJULK+Djd9N9qqAAdMF1pCYoG8cxAJdWpO+lYr+JwTSY0vxZT
+o9xd4Rkyurw7esl2lNn4R/g=
+-----END PRIVATE KEY-----
