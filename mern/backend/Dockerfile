@@ -9,8 +9,8 @@ COPY package*.json ./
 RUN npm install
 
 # Upgrade vulnerable dependencies to safe versions
-RUN npm install path-to-regexp@^6.3.0 qs@^6.14.1 tar@^7.5.3 --save \
-    && npm cache clean --force
+# RUN npm install path-to-regexp@^6.3.0 qs@^6.14.1 tar@^7.5.3 --save \
+#     && npm cache clean --force
 
 # Copy app source code
 COPY . .
