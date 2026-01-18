@@ -1,5 +1,0 @@
-[localhost]
-localhost ansible_connection=local
-
-[Jenkins_slave]
-Jenkins_slave ansible_host=192.168.56.16 ansible_user=vagrant

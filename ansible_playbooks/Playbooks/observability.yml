@@ -1,5 +1,0 @@
-- name: observability tools installation
-  hosts: localhost
-  become: true
-  roles:
-    - observability
