@@ -13,17 +13,35 @@ pipeline {
       steps {
            git(
                 url: 'https://github.com/horrondor/Devops_final_project.git',
-                branch: 'observe',
+                branch: 'final',
                 credentialsId: "${Github_cred}"    
               )
       }
     }
-    stage('Show Workspace') {
+    // stage('Show Workspace') {
+    //   steps {
+    //     echo "Workspace path: ${env.WORKSPACE}"
+    //     sh 'pwd'
+    //     sh 'ls -l'
+    //   }
+    // }
+    stage('Sonarqube Scanning'){
       steps {
-        echo "Workspace path: ${env.WORKSPACE}"
-        sh 'pwd'
-        sh 'ls -l'
+        
       }
+
+    }
+    stage('Sonarqube scanner'){ 
+      steps{ 
+        withSonarQubeEnv('SonarQube') { 
+          sh """ sonar-scanner \ -Dsonar.projectKey=mern-devops-project \ 
+          -Dsonar.projectName=mern-devops-project \ 
+          -Dsonar.projectVersion=${TAG} \ 
+          -Dsonar.sources=mern \ 
+          -Dsonar.language=js \ 
+          -Dsonar.sourceEncoding=UTF-8 """
+        } 
+      } 
     }
     stage ('Make Docker images'){
       steps {
@@ -90,6 +108,18 @@ pipeline {
      stage ('Deploy prod instance'){
       steps {
         echo "Deploying to prod env"
+        // sh """
+        // kubetcl apply -f local-storageclass.yml
+        // kubetcl apply -f mongo_pv.yml
+        // kubetcl apply -f mongo_pvc.yml
+        // kubetcl apply -f mongo_service.yml
+        // kubetcl apply -f mongo_statefulset.yml
+        // kubetcl apply -f mongo_statefulset.yml
+        // kubetcl apply -f frontend_deployment.yml
+        // kubetcl apply -f frontend_service.yml
+        // kubetcl apply -f backend_deployment.yml
+        // kubetcl apply -f backend_service.yml
+        // """
       }
     }
   }
