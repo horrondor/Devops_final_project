@@ -2,7 +2,7 @@ pipeline {
   // agent { label 'Jenkins_slave' }
   agent any
   environment {
-    // Github_cred    = "Github-cred"
+    Github_cred    = "Github-cred"
     Frontend_image = "raju217/frontend"
     Backend_image  = "raju217/backend"
     // Dockerhub_username = "raju217"
