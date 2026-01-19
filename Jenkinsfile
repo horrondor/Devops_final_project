@@ -7,6 +7,7 @@ pipeline {
     Backend_image  = "raju217/backend"
     // Dockerhub_username = "raju217"
     TAG = "${BUILD_NUMBER}"
+    scannerHome = tool 'sonar7.0'
   }
   stages{
     stage('Pull from git') {
@@ -26,18 +27,16 @@ pipeline {
       }
     }
     stage('Sonarqube scanner'){ 
-      tools {
-        sonarRunner "sonarqube8.0"
-      }
       steps{ 
         withSonarQubeEnv('SonarQube') { 
           sh """
-            sonar-scanner \
+            ${scannerHome}/bin/sonar-scanner 
             -Dsonar.projectKey=mern-devops-project \
             -Dsonar.projectName=mern-devops-project \
             -Dsonar.projectVersion=${TAG} \
             -Dsonar.sources=mern \
             -Dsonar.sourceEncoding=UTF-8
+            
           """
         } 
       } 
