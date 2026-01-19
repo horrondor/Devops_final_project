@@ -34,7 +34,8 @@ pipeline {
     stage('Sonarqube scanner'){ 
       steps{ 
         withSonarQubeEnv('SonarQube') { 
-          sh """ sonar-scanner \ -Dsonar.projectKey=mern-devops-project \ 
+          sh """ sonar-scanner \ 
+          -Dsonar.projectKey=mern-devops-project \ 
           -Dsonar.projectName=mern-devops-project \ 
           -Dsonar.projectVersion=${TAG} \ 
           -Dsonar.sources=mern \ 
