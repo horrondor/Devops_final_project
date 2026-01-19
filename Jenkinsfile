@@ -27,7 +27,7 @@ pipeline {
     // }
     stage('Sonarqube scanner'){ 
       tools {
-        SonarRunner "sonarqube8.0"
+        sonarRunner "sonarqube8.0"
       }
       steps{ 
         withSonarQubeEnv('SonarQube') { 
