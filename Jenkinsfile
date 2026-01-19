@@ -7,7 +7,7 @@ pipeline {
     Backend_image  = "raju217/backend"
     // Dockerhub_username = "raju217"
     TAG = "${BUILD_NUMBER}"
-    scannerHome = tool 'sonar7.0'
+    scannerHome = tool 'sonarqube8.0'
   }
   stages{
     stage('Pull from git') {
