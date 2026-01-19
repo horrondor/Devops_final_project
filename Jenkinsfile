@@ -25,23 +25,17 @@ pipeline {
     //     sh 'ls -l'
     //   }
     // }
-    stage('Sonarqube Scanning'){
-      steps {
-        
-      }
-
-    }
     stage('Sonarqube scanner'){ 
       steps{ 
         withSonarQubeEnv('SonarQube') { 
-          sh """ 
-             sonar-scanner \ 
-            -Dsonar.projectKey=mern-devops-project \ 
-            -Dsonar.projectName=mern-devops-project \ 
-            -Dsonar.projectVersion=${TAG} \ 
-            -Dsonar.sources=mern \ 
-            -Dsonar.language=js \ 
-            -Dsonar.sourceEncoding=UTF-8 """
+          sh """
+            sonar-scanner \
+            -Dsonar.projectKey=mern-devops-project \
+            -Dsonar.projectName=mern-devops-project \
+            -Dsonar.projectVersion=${TAG} \
+            -Dsonar.sources=mern \
+            -Dsonar.sourceEncoding=UTF-8
+          """
         } 
       } 
     }
