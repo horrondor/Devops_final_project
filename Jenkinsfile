@@ -30,7 +30,7 @@ pipeline {
       steps{ 
         withSonarQubeEnv('SonarQube') { 
           sh """
-            ${scannerHome}/bin/sonar-scanner 
+            ${scannerHome}/bin/sonar-scanner \
             -Dsonar.projectKey=mern-devops-project \
             -Dsonar.projectName=mern-devops-project \
             -Dsonar.projectVersion=${TAG} \
