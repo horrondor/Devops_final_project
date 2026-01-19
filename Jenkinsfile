@@ -26,6 +26,9 @@ pipeline {
     //   }
     // }
     stage('Sonarqube scanner'){ 
+      tools {
+        sonarQubeScanner 'sonarqube8.0'
+      }
       steps{ 
         withSonarQubeEnv('SonarQube') { 
           sh """
