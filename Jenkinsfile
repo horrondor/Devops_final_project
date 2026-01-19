@@ -18,13 +18,13 @@ pipeline {
               )
       }
     }
-    // stage('Show Workspace') {
-    //   steps {
-    //     echo "Workspace path: ${env.WORKSPACE}"
-    //     sh 'pwd'
-    //     sh 'ls -l'
-    //   }
-    // }
+    stage('Show Workspace') {
+      steps {
+        echo "Workspace path: ${env.WORKSPACE}"
+        sh 'pwd'
+        sh 'ls -l'
+      }
+    }
     stage('Sonarqube scanner'){ 
       tools {
         sonarRunner "sonarqube8.0"
