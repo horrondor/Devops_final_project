@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: raju217/backend:16
+        ports:
+        - containerPort: 5050
+        env:
+        - name: MONGO_URI
+          value: mongodb://mongodb-0.mongodb.default.svc.cluster.local:27017/mydb
+
