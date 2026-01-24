@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: raju217/backend:17
+        image: raju217/backend:50
         ports:
         - containerPort: 5050
         env:
