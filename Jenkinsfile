@@ -5,7 +5,7 @@ pipeline {
     Github_cred    = "Github-cred"
     Frontend_image = "raju217/frontend"
     Backend_image  = "raju217/backend"
-    // Dockerhub_username = "raju217"
+    KUBECONFIG = credentials('kubeconfig')
     TAG = "${BUILD_NUMBER}"
     scannerHome = tool 'sonarqube8.0'
   }
