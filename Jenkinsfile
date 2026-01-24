@@ -103,7 +103,7 @@ pipeline {
           export KUBECONFIG=${KUBECONFIG}
           envsubst < ./k8-deployment/local-storageclass.yml | kubectl apply -f -
           envsubst < ./k8-deployment/mongo_pv.yml | kubectl apply -f -
-          envsubst < ./k8-deployment/mongo_pvc.yml | kubectl apply -f -
+          // envsubst < ./k8-deployment/mongo_pvc.yml | kubectl apply -f -
           envsubst < ./k8-deployment/mongo_service.yml | kubectl apply -f -
           envsubst < ./k8-deployment/mongo_statefulset.yml | kubectl apply -f -
           envsubst < ./k8-deployment/frontend_deployment.yml | kubectl apply -f -
