@@ -88,11 +88,11 @@ pipeline {
         echo "Deploying to dev env"
       }
     }
-    stage('Test Kubernetes Access') {
-      steps {
-        sh 'kubectl get nodes'
-      }
-    }
+    // stage('Test Kubernetes Access') {
+    //   steps {
+    //     sh 'kubectl get nodes'
+    //   }
+    // }
     stage ('Deploy prod instance'){
       steps {
         echo "Deploying to prod env"
@@ -100,16 +100,16 @@ pipeline {
         input message:'Approve PRODUCTION Deployment?'
         }
         sh """
-        kubectl apply -f ./k8-deployment/local-storageclass.yml
-        kubectl apply -f ./k8-deployment/mongo_pv.yml
-        kubectl apply -f ./k8-deployment/mongo_pvc.yml
-        kubectl apply -f ./k8-deployment/mongo_service.yml
-        kubectl apply -f ./k8-deployment/mongo_statefulset.yml
-        kubectl apply -f ./k8-deployment/mongo_statefulset.yml
-        kubectl apply -f ./k8-deployment/frontend_deployment.yml
-        kubectl apply -f ./k8-deployment/frontend_service.yml
-        kubectl apply -f ./k8-deployment/backend_deployment.yml
-        kubectl apply -f ./k8-deployment/backend_service.yml
+        envsubst < kubectl apply -f ./k8-deployment/local-storageclass.yml
+        envsubst < kubectl apply -f ./k8-deployment/mongo_pv.yml
+        envsubst < kubectl apply -f ./k8-deployment/mongo_pvc.yml
+        envsubst < kubectl apply -f ./k8-deployment/mongo_service.yml
+        envsubst < kubectl apply -f ./k8-deployment/mongo_statefulset.yml
+        envsubst < kubectl apply -f ./k8-deployment/mongo_statefulset.yml
+        envsubst < kubectl apply -f ./k8-deployment/frontend_deployment.yml
+        envsubst < kubectl apply -f ./k8-deployment/frontend_service.yml
+        envsubst < kubectl apply -f ./k8-deployment/backend_deployment.yml
+        envsubst < kubectl apply -f ./k8-deployment/backend_service.yml
         """
       }
     }
