@@ -5,9 +5,10 @@ metadata:
   labels:
     app: frontend
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: frontend
   ports:
     - port: 5173
-      targetPort: 80  
+      targetPort: 80 
+      nodePort: 30001
