@@ -28,6 +28,7 @@ pipeline {
             -Dsonar.projectName=mern-devops-project \
             -Dsonar.projectVersion=${TAG} \
             -Dsonar.sources=mern \
+            -Dsonar.host.url=http://172.31.3.169 \
             -Dsonar.sourceEncoding=UTF-8
             
           """
