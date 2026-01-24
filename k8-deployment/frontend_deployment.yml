@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: raju217/frontend:16
+        image: raju217/frontend:17
         ports:
         - containerPort: 80
         env:
