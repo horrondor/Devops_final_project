@@ -10,3 +10,16 @@
 - name: Display nodeexporter install output 
   ansible.builtin.debug:
     msg: "{{ nodeexporter_install.stderr_lines }}" 
+
+- name: Make a directory
+  ansible.builtin.file:
+    path: /etc/node_exporter
+    state: directory
+    owner: node_exporter
+
+- name: Copy node_exporter file
+  ansible.builtin.copy:
+    src: /home/horrondor/Desktop/Devops_final_project/node_exporter/config/
+    dest: /etc/node_exporter/
+    mode: '0755'
+    owner: node_exporter

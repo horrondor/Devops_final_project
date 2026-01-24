@@ -2,10 +2,15 @@
 localhost ansible_connection=local
 
 [Jenkins_slave]
-Jenkins_slave ansible_host=192.168.56.16 ansible_user=vagrant
+#Jenkins_slave ansible_host=192.168.56.16 ansible_user=vagrant
+Jenkins_aws ansible_host=3.238.35.68 ansible_user=ubuntu
 
 [controlplane]
-controlplane ansible_host=192.168.56.13 ansible_user=vagrant
+#controlplane ansible_host=192.168.56.13 ansible_user=vagrant
+controlplane_aws ansible_host=98.92.185.41 ansible_user=ubuntu
 
 [workernode]
-workernode ansible_host=192.168.56.14 ansible_user=vagrant
+#workernode1 ansible_host=192.168.56.14 ansible_user=vagrant
+workernode1_aws ansible_host=3.239.191.154 ansible_user=ubuntu
+workernode2_aws ansible_host=44.200.133.139 ansible_user=ubuntu
+

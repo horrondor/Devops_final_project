@@ -20,7 +20,9 @@ After=network-online.target
 Type=simple
 User=node_exporter
 Group=node_exporter
-ExecStart=/usr/local/bin/node_exporter
+ExecStart=/usr/local/bin/node_exporter \
+  --web.config.file=/etc/node_exporter/config.yml
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
