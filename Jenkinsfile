@@ -19,28 +19,21 @@ pipeline {
               )
       }
     }
-    stage('Show Workspace') {
-      steps {
-        echo "Workspace path: ${env.WORKSPACE}"
-        sh 'pwd'
-        sh 'ls -l'
-      }
-    }
-    stage('Sonarqube scanner'){ 
-      steps{ 
-        withSonarQubeEnv('SonarQube') { 
-          sh """
-            ${scannerHome}/bin/sonar-scanner \
-            -Dsonar.projectKey=mern-devops-project \
-            -Dsonar.projectName=mern-devops-project \
-            -Dsonar.projectVersion=${TAG} \
-            -Dsonar.sources=mern \
-            -Dsonar.sourceEncoding=UTF-8
+    // stage('Sonarqube scanner'){ 
+    //   steps{ 
+    //     withSonarQubeEnv('SonarQube') { 
+    //       sh """
+    //         ${scannerHome}/bin/sonar-scanner \
+    //         -Dsonar.projectKey=mern-devops-project \
+    //         -Dsonar.projectName=mern-devops-project \
+    //         -Dsonar.projectVersion=${TAG} \
+    //         -Dsonar.sources=mern \
+    //         -Dsonar.sourceEncoding=UTF-8
             
-          """
-        } 
-      } 
-    }
+    //       """
+    //     } 
+    //   } 
+    // }
     stage ('Make Docker images'){
       steps {
         echo "Creating frontend image"
