@@ -16,10 +16,18 @@
     path: /etc/node_exporter
     state: directory
     owner: node_exporter
-
-- name: Copy node_exporter file
-  ansible.builtin.copy:
-    src: /home/horrondor/Desktop/Devops_final_project/node_exporter/config/
-    dest: /etc/node_exporter/
+    group: node_exporter
     mode: '0755'
+
+
+- name: Copy node_exporter config and TLS files
+  ansible.builtin.copy:
+    src: "/home/horrondor/Desktop/Devops_final_project/node_exporter/config/{{ item.name }}"
+    dest: "/etc/node_exporter/{{ item.name }}"
     owner: node_exporter
+    group: node_exporter
+    mode: "{{ item.mode }}"
+  loop: "{{ node_exporter_files }}"
+  notify: Restart node_exporter
+
+

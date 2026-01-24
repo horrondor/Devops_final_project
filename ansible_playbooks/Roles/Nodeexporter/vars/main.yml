@@ -1,3 +1,10 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # vars file for nodeexporter
+node_exporter_files:
+  - name: config.yml
+    mode: '0644'
+  - name: node_exporter.crt
+    mode: '0644'
+  - name: node_exporter.key 
+    mode: '0600'
