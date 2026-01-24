@@ -92,16 +92,16 @@ pipeline {
       steps {
         echo "Deploying to prod env"
         sh """
-        kubetcl apply -f .k8-deployment/local-storageclass.yml
-        kubetcl apply -f .k8-deployment/mongo_pv.yml
-        kubetcl apply -f .k8-deployment/mongo_pvc.yml
-        kubetcl apply -f .k8-deployment/mongo_service.yml
-        kubetcl apply -f .k8-deployment/mongo_statefulset.yml
-        kubetcl apply -f .k8-deployment/mongo_statefulset.yml
-        kubetcl apply -f .k8-deployment/frontend_deployment.yml
-        kubetcl apply -f .k8-deployment/frontend_service.yml
-        kubetcl apply -f .k8-deployment/backend_deployment.yml
-        kubetcl apply -f .k8-deployment/backend_service.yml
+        kubectl apply -f .k8-deployment/local-storageclass.yml
+        kubectl apply -f .k8-deployment/mongo_pv.yml
+        kubectl apply -f .k8-deployment/mongo_pvc.yml
+        kubectl apply -f .k8-deployment/mongo_service.yml
+        kubectl apply -f .k8-deployment/mongo_statefulset.yml
+        kubectl apply -f .k8-deployment/mongo_statefulset.yml
+        kubectl apply -f .k8-deployment/frontend_deployment.yml
+        kubectl apply -f .k8-deployment/frontend_service.yml
+        kubectl apply -f .k8-deployment/backend_deployment.yml
+        kubectl apply -f .k8-deployment/backend_service.yml
         """
       }
     }
