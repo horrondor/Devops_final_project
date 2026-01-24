@@ -91,17 +91,20 @@ pipeline {
      stage ('Deploy prod instance'){
       steps {
         echo "Deploying to prod env"
+        timeout(time:1, unit:'HOURS'){
+        input message:'Approve PRODUCTION Deployment?'
+        }
         sh """
-        kubectl apply -f .k8-deployment/local-storageclass.yml
-        kubectl apply -f .k8-deployment/mongo_pv.yml
-        kubectl apply -f .k8-deployment/mongo_pvc.yml
-        kubectl apply -f .k8-deployment/mongo_service.yml
-        kubectl apply -f .k8-deployment/mongo_statefulset.yml
-        kubectl apply -f .k8-deployment/mongo_statefulset.yml
-        kubectl apply -f .k8-deployment/frontend_deployment.yml
-        kubectl apply -f .k8-deployment/frontend_service.yml
-        kubectl apply -f .k8-deployment/backend_deployment.yml
-        kubectl apply -f .k8-deployment/backend_service.yml
+        kubectl apply -f ./k8-deployment/local-storageclass.yml
+        kubectl apply -f ./k8-deployment/mongo_pv.yml
+        kubectl apply -f ./k8-deployment/mongo_pvc.yml
+        kubectl apply -f ./k8-deployment/mongo_service.yml
+        kubectl apply -f ./k8-deployment/mongo_statefulset.yml
+        kubectl apply -f ./k8-deployment/mongo_statefulset.yml
+        kubectl apply -f ./k8-deployment/frontend_deployment.yml
+        kubectl apply -f ./k8-deployment/frontend_service.yml
+        kubectl apply -f ./k8-deployment/backend_deployment.yml
+        kubectl apply -f ./k8-deployment/backend_service.yml
         """
       }
     }
