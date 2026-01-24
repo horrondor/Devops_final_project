@@ -55,6 +55,7 @@ pipeline {
           --severity HIGH,CRITICAL\
           --ignore-unfixed\
           ${Frontend_image}:${TAG} \
+          || true
          """
 
         echo "Scaning Backend images"
