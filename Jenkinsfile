@@ -88,7 +88,12 @@ pipeline {
         echo "Deploying to dev env"
       }
     }
-     stage ('Deploy prod instance'){
+    stage('Test Kubernetes Access') {
+      steps {
+        sh 'kubectl get nodes'
+      }
+    }
+    stage ('Deploy prod instance'){
       steps {
         echo "Deploying to prod env"
         timeout(time:1, unit:'HOURS'){
