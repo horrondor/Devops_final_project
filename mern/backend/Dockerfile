@@ -1,5 +1,5 @@
 # ---- Build stage ----
-FROM node:22-alpine AS build
+FROM node:current-alpine3.23 AS build
 
 # Set working directory
 WORKDIR /app
@@ -21,7 +21,7 @@ COPY . .
 
 
 # ---- Runtime stage ----
-FROM node:22-alpine AS runtime
+FROM node:current-alpine3.23 AS runtime
 
 WORKDIR /app
 
