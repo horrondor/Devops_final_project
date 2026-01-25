@@ -1,3 +1,5 @@
 .vscode
 menv
 ansible_playbooks
+npm-debug.log
+node_modules
