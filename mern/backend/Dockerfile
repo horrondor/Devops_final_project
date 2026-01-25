@@ -1,49 +1,34 @@
 # ---- Build stage ----
 FROM node:current-alpine3.23 AS build
-
-# Set working directory
 WORKDIR /app
 
-# Upgrade Alpine packages to fix base vulnerabilities (libpng, etc)
+# Upgrade base Alpine packages
 RUN apk update && apk upgrade --no-cache
 
-# Copy package files first for caching
+# Copy package.json for caching
 COPY package*.json ./
 
-# Install all dependencies for build
+# Install dependencies
 RUN npm ci
 
-# Copy app source code
+# Copy application code
 COPY . .
-
-# Optional: run tests or build scripts if any
-# RUN npm run build
-
 
 # ---- Runtime stage ----
 FROM node:current-alpine3.23 AS runtime
-
 WORKDIR /app
 
-# Upgrade runtime Alpine packages for CVEs
+# Upgrade Alpine packages for CVEs
 RUN apk update && apk upgrade --no-cache
 
-# Copy only production dependencies from build stage
-COPY --from=build /app/node_modules ./node_modules
-
-# Copy app code
+# Copy app and node_modules from build stage
 COPY --from=build /app ./
 
-# Update vulnerable packages to patched versions
-RUN npm install body-parser@1.20.3 glob@10.5.0 path-to-regexp@0.1.10 qs@6.14.1 tar@7.5.4 --save
-
-# Create non-root user for security
+# Create non-root user
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup \
     && chown -R appuser:appgroup /app
-
 USER appuser
 
-# Expose app port
 EXPOSE 5050
 
 # Start the app
