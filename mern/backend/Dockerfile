@@ -1,3 +1,4 @@
+# ---- Build stage ----
 FROM node:22-alpine AS build
 
 WORKDIR /app
@@ -5,17 +6,13 @@ WORKDIR /app
 # Copy only package files first
 COPY package*.json ./
 
-# Install all dependencies (including dev for build)
 RUN npm install
-
-# Upgrade vulnerable dependencies to safe versions
-# RUN npm install path-to-regexp@^6.3.0 qs@^6.14.1 tar@^7.5.3 --save \
-#     && npm cache clean --force
 
 # Copy app source code
 COPY . .
 
 
+# ---- Runtime stage ----
 FROM node:22-alpine
 
 WORKDIR /app
