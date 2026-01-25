@@ -6,10 +6,14 @@ WORKDIR /app
 # Prevent Cypress binary download
 ENV CYPRESS_INSTALL_BINARY=0
 
+RUN apk update && apk upgrade --no-cache
+
 COPY package*.json ./
+
 RUN npm ci
 
 COPY . .
+
 RUN npm run build
 
 
