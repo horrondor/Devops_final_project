@@ -18,7 +18,7 @@ RUN npm run build
 
 
 # ---- Runtime stage ----
-FROM nginx:alpine
+FROM nginx:1.27.2-alpine3.24
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 
