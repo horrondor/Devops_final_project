@@ -26,7 +26,7 @@ FROM node:22-alpine AS runtime
 WORKDIR /app
 
 # Upgrade runtime Alpine packages for CVEs
-# RUN apk update && apk upgrade --no-cache
+RUN apk update && apk upgrade --no-cache
 
 # Copy only production dependencies from build stage
 COPY --from=build /app/node_modules ./node_modules
