@@ -115,37 +115,37 @@ pipeline {
     }
   }
 
-  // post {
-  //   always {
-  //     mail to: 'horrondor170@gmail.com',
-  //     subject: "Job '${JOB_NAME}' (${TAG}) is running",
-  //     body: "Please go to ${BUILD_URL} and verify the build"
-  //    }
+  post {
+    // always {
+    //   mail to: 'horrondor170@gmail.com',
+    //   subject: "Job '${JOB_NAME}' (${TAG}) is running",
+    //   body: "Please go to ${BUILD_URL} and verify the build"
+    //  }
 
-  //   success {
-  //     mail bcc: '', body: """Hi Team,
+    success {
+      mail bcc: '', body: """Hi Team,
 
-	//     Build #$BUILD_NUMBER is successful, please go through the url
+	    Build #$BUILD_NUMBER is successful, please go through the url
 
-	//     $BUILD_URL
+	    $BUILD_URL
 
-  //   	and verify the details.
+    	and verify the details.
 
-	//     Regards,
-	//     DevOps Team""", cc: '', from: '', replyTo: '', subject: 'BUILD SUCCESS NOTIFICATION', to: 'horrondor170@gmail.com'
-  //   }
+	    Regards,
+	    DevOps Team""", cc: '', from: '', replyTo: '', subject: 'BUILD SUCCESS NOTIFICATION', to: 'horrondor170@gmail.com'
+    }
 
-  //   failure{
-  //     mail bcc: '', body: """Hi Team,
+    failure{
+      mail bcc: '', body: """Hi Team,
             
-	//     Build #$BUILD_NUMBER is unsuccessful, please go through the url
+	    Build #$BUILD_NUMBER is unsuccessful, please go through the url
 
-	//     $BUILD_URL
+	    $BUILD_URL
 
-	//     and verify the details.
+	    and verify the details.
 
-	//     Regards,
-	//     DevOps Team""", cc: '', from: '', replyTo: '', subject: 'BUILD FAILED NOTIFICATION', to: 'horrondor170@gmail.com'
-  //   }
-  // }
+	    Regards,
+	    DevOps Team""", cc: '', from: '', replyTo: '', subject: 'BUILD FAILED NOTIFICATION', to: 'horrondor170@gmail.com'
+    }
+  }
 }
