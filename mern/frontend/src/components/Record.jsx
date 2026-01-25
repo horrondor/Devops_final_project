@@ -60,7 +60,7 @@ export default function Record() {
         });
       } else {
         // if we are updating a record we will PATCH to /record/:id.
-        response = await fetch(`98.92.185.41:30050/record/${params.id}`, {
+        response = await fetch(`http://98.92.185.41:30050/record/${params.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
